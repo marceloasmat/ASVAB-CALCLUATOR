@@ -1,7 +1,10 @@
 package com.marceloasmat.asvabsuccess
 
 import android.media.SubtitleData
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -16,6 +19,8 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -24,13 +29,23 @@ import com.marceloasmat.asvabsuccess.ui.theme.AsvabSuccessTheme
 
 @Composable
 fun HomeScreen() {
-    Column(modifier = Modifier.fillMaxSize().statusBarsPadding().padding(horizontal = 16.dp)) {
-        Text(text = "ASVAB Calculator", fontSize = 40.sp, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth() )
-        Text(text = "Enter your scores", fontSize = 25.sp, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
-        InputScores()
-        Spacer(Modifier.weight(1f))
-        CalculateButton(modifier = Modifier.align(Alignment.CenterHorizontally))
-        Spacer(Modifier.weight(1f))
+    Box(modifier = Modifier.fillMaxSize()){
+        Image(
+            painter = painterResource(id = R.drawable.completly_original_ship_drawing),
+            contentDescription = null,
+            alpha = 0.6f,
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.FillBounds)
+
+        Column(modifier = Modifier.fillMaxSize().statusBarsPadding().padding(horizontal = 16.dp)) {
+            Text(text = "ASVAB Calculator", fontSize = 40.sp, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth() )
+            Text(text = "Enter your scores", fontSize = 25.sp, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
+            InputScores()
+            Spacer(Modifier.weight(1f))
+            CalculateButton(modifier = Modifier.align(Alignment.CenterHorizontally))
+            Spacer(Modifier.weight(1f))
+        }
+
     }
 }
 
