@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.sp
 import com.marceloasmat.asvabsuccess.ui.theme.AsvabSuccessTheme
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(onCalculateClick: () -> Unit) {
     Box(modifier = Modifier.fillMaxSize()){
         Image(
             painter = painterResource(id = R.drawable.completly_original_ship_drawing),
@@ -48,7 +48,7 @@ fun HomeScreen() {
             Text(text = "Enter your scores", fontSize = 25.sp, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
             InputScores()
             Spacer(Modifier.weight(1f))
-            CalculateButton(modifier = Modifier.align(Alignment.CenterHorizontally))
+            CalculateButton(modifier = Modifier.align(Alignment.CenterHorizontally), onClick = onCalculateClick)
             Spacer(Modifier.weight(1f))
         }
 
@@ -72,10 +72,10 @@ fun InputScores(){
 }
 
 @Composable
-fun CalculateButton(modifier: Modifier = Modifier){
+fun CalculateButton(modifier: Modifier = Modifier, onClick: () -> Unit){
     Button(
         modifier = modifier,
-        onClick = {}
+        onClick = onClick,
     ) {
         Text(text = "Calculate", fontSize = 25.sp)
     }
@@ -105,6 +105,6 @@ fun UserInputCell(title: String, subtitle: String){
 @Composable
 fun Preview() {
     AsvabSuccessTheme {
-        HomeScreen()
+        HomeScreen(onCalculateClick = {})
     }
 }

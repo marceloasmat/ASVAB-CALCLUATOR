@@ -11,12 +11,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+
+import androidx.navigation.compose.rememberNavController
 import com.marceloasmat.asvabsuccess.domain.NavyRate
 import com.marceloasmat.asvabsuccess.domain.QualifyingCondition
 import com.marceloasmat.asvabsuccess.domain.SectionTopic
 import com.marceloasmat.asvabsuccess.domain.TestScore
 import com.marceloasmat.asvabsuccess.domain.UserTestResults
 import com.marceloasmat.asvabsuccess.ui.theme.AsvabSuccessTheme
+import kotlinx.serialization.Serializable
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,10 +55,25 @@ class MainActivity : ComponentActivity() {
         setContent {
             AsvabSuccessTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeScreen()
+                    val navController = rememberNavController()
+                    NavHost(navController = navController, startDestination = HomeDestination){
+                        composable<HomeDestination> {
+                            HomeScreen(onCalculateClick = {
+                                navController.navigate(JobResultsDestination)
+                            })
+                        }
+                        composable<JobResultsDestination> {
+                            JobResultsScreen()
+                        }
+                    }
                 }
             }
         }
     }
 }
+@Serializable
+object HomeDestination
+@Serializable
+object JobResultsDestination
+
 
