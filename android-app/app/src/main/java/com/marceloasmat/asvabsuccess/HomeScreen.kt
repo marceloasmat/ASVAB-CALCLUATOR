@@ -13,14 +13,20 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -82,10 +88,13 @@ fun UserInputCell(title: String, subtitle: String){
             Text(text = title, fontSize = 20.sp, textAlign = TextAlign.Center,)
             Text(text = subtitle, fontSize = 13.sp, )
         }
+        var text by remember { mutableStateOf("") }
         TextField(
-            value = "",
-            onValueChange = {},
-            modifier = Modifier.width(60.dp)
+            value = text,
+            onValueChange = { newText -> text = newText }, // Updates 'text' when user types
+            modifier = Modifier.width(70.dp),
+            maxLines = 1,
+            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number)
 
         )
     }
