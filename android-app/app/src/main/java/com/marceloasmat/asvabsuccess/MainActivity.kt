@@ -77,3 +77,12 @@ object HomeDestination
 object JobResultsDestination
 
 
+@Serializable
+enum class JobResultsTabDestination{
+    QualifiedJobsDestination,
+    WaiverableJobsDestination,
+    UnqualifiedJobsDestination
+
+}
+
+
