@@ -12,7 +12,6 @@ import androidx.navigation.compose.composable
 
 import androidx.navigation.compose.rememberNavController
 import com.marceloasmat.asvabsuccess.domain.NavyRate
-import com.marceloasmat.asvabsuccess.domain.QualifyingCondition
 import com.marceloasmat.asvabsuccess.domain.SectionTopic
 import com.marceloasmat.asvabsuccess.domain.TestScore
 import com.marceloasmat.asvabsuccess.domain.UserTestScores
@@ -22,16 +21,7 @@ import kotlinx.serialization.Serializable
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val navyCounselor = NavyRate(
-            name = "Navy Counselor",
-            qualifyingCondition = QualifyingCondition(
-                topics = listOf(
-                    SectionTopic.GeneralScience, SectionTopic.MathematicsKnowledge, SectionTopic.Verbal,
-                ),
-                minimumScore = 156,
-            )
 
-        )
         val userTestScores = UserTestScores(
             scores = listOf(
                 TestScore(score = 80, sectionTopic = SectionTopic.Verbal),
